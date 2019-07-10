@@ -67,12 +67,12 @@ Copiamos el siguiente código de MyJobService a nuestro proyecto creado:
 
 ![](.README_images/ec82d98e.png)
 
-El siguiente paso es agregar los servicios de notificacion siguientes en el archivo AndroidManifest.xml, esto lo debes agregar inmediatamente abajo de la etiqueta de cierre de la activity del manifest
+El siguiente paso es agregar los servicios de notificacion siguientes en el archivo AndroidManifest.xml, esto lo debes agregar inmediatamente abajo de la etiqueta de cierre de la activity, antes del cierre del manifest
 como se inidca a continuación:
 
 ![](.README_images/3e2a1963.png)
 
-![](.README_images/7dcb1b6c.png)
+![](.README_images/4831781d.png)
 
 ```
 <!-- Agregamos aqui la parte de el servicio de mensajeria -->
