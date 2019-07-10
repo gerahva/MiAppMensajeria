@@ -95,6 +95,59 @@ como se inidca a continuación:
         </service>
 ```
 
+Ingresamos al repositorio a la ruta indicada para poder ingresar al archivo ic_stat_ic_notification.png:
+
+![](.README_images/720b8a1c.png)
+
+Descargamos el archivo y lo guardamos para copiarlo en la carpeta drawable:
+
+![](.README_images/325279d6.png)
+
+Lo copiamos en la carpeta drawable:
+
+![](.README_images/7273e227.png)
+
+De la ruta indicada en el repositorio, ingresamos a la carpeta "values" e ingresamos al archivo strings.xml:
+
+![](.README_images/dc182987.png)
+
+Copiamos el código del archivo strings.xml y lo pegamos en nuestro proyecto dentro de la carpeta "values" en el archivo strings.xml
+
+![](.README_images/f5ee98e3.png)
+
+![](.README_images/19685aaf.png)
+
+```
+
+<resources>
+    <string name="app_name">Salud Unitec</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="subscribe_to_news">Subscribirse a alertas</string>
+    <string name="log_token">Obtener token</string>
+
+    <string name="msg_subscribed">Subscribirse a alertas</string>
+    <string name="msg_token_fmt" translatable="false">ID del Token: %s</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">News</string>
+</resources>
+
+```
+
+
+
+
+
 
 
 
