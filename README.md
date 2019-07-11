@@ -144,8 +144,53 @@ Copiamos el código del archivo strings.xml y lo pegamos en nuestro proyecto den
 
 ```
 
+En caso de que nos aparezca del lado izquierdo de la pantalla la instrucción Sync Now le damos ok , para descargar las dependecias correctamente, una voz hecho esto corremos la aplicación.
+
+![](.README_images/25197d56.png)
 
 
+
+Para continuar con la mensajeria en la app, procedemos a seleccionar nuestro proyecto en Firebase:
+
+![](.README_images/7e1db6ab.png)
+
+Seleccionamos la Opción "Cloud Messaging":
+
+![](.README_images/ef5e9501.png)
+
+Seleccionamos nuestro primer mensaje:
+
+![](.README_images/74e986fb.png)
+
+Llenamos los campos correspondientes y damos siguiente:
+
+![](.README_images/41cb38d8.png)
+
+Una vez hecho esto procedemos a seleccionar el nombre de nuestro proyecto:
+
+![](.README_images/fd5f88d1.png)
+
+Damos enviar Ahora el mensaje:
+
+![](.README_images/c06124e5.png)
+
+Le damos siguiente:
+
+![](.README_images/b7574707.png)
+
+Seleccionamos con sonido Habilitado:
+
+![](.README_images/ff0df026.png)
+
+Damos revisar:
+
+![](.README_images/f0bee9cf.png)
+
+Revisamos desde la consola que se haya enviado el mensaje al celular:
+
+![](.README_images/7d587550.png)
+
+Y esto indica que nos llega una notificación al celular con el mensaje que escribimos desde la consola.
 
 
 
