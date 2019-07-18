@@ -42,7 +42,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "From: " + remoteMessage!!.from!!)
+        Log.d(TAG, "de" + remoteMessage!!.from!!)
 
         // Check if message contains a data payload.
         if (remoteMessage.data.size > 0) {
