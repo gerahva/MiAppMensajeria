@@ -14,12 +14,13 @@ class MainActivity : AppCompatActivity() {
 
         registrar.setOnClickListener {
 
-            //primer paso obtener token
+            //segundo paso obtener token
             var token= FirebaseInstanceId.getInstance().token
 
                     Toast.makeText(this,"El toke es $token",Toast.LENGTH_LONG).show()
 
             //El siguiente paso es GUARDAR ese token en tu base de datos a treves de un servicio rest de tu app de heroku
+            //paso 3:
         TareaGuardarRedSocial(this,token,this).execute()
 
         }

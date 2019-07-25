@@ -1,198 +1,92 @@
 # MiAppMensajeria
-Repositorio de un proyecto con mensajeria
+Envió de mensajeria desde la computadora al celular
 
-El primer paso es generar um nuevo proyecto IntelliJ IDEA y posteriormente en Android studio en el cual vamos a implementar Firebase.
+El primer paso es generar un nuevo proyecto IntelliJ IDEA y posteriormente en Android studio en el cual se implementará FIREBASE con su configuración correspondiente
 
-Primero generamos nes
+1-.La configuración de FIREBASE para usarlo en la aplicación que desarrollamos se ha hecho en el tutorial README.
 
-![](.README_images/26a0f75c.png)
+2-.Registramos el TOKEN  que otorga Firebase por cada celular que usará al aplicación, esto lo haremos desde la clase MainActivity.
+Generamos con un botón "registrar" en la app, posteriormente lo guardamos en la variable "token" 
 
-El primer paso es obtener un añadir un proyecto nuevo en firebase, en la siguiente URL y añadir un nuevo proyecto.
+![](.TUTORIAL_images/37f92ee9.png)
 
-![](.README_images/d0e2a780.png)
+3-.El siguiente paso es GUARDAR ese token en tu base de datos a traves de un servicio REST de tu app de heroku
 
-Una vez que cingresamos en la opción de genrar un nuevo proyecto, damos el nombre del proyecto a crear
+![](.TUTORIAL_images/75603f6f.png)
 
-![](.README_images/0b57599d.png)
+Creamos en Kotlin la case RedSocial ,la cual contendra las variables "token" y "nickname"
 
-De inmediato se te asigna un id de proyecto, el cual es muy importante, a continuaion se nos pide seleccionar una tecnología, seleccionamos Android
+![](.TUTORIAL_images/3cc8e859.png)
 
-![](.README_images/bd7d0267.png)
+De igual forma creamos en Kotlin la clase Estatus, la cual nos proporcionará un mensaje de respuesta una vez que se haya ejecutado la acción de guardar un objeto:
 
-En la siguiente ventana vamos a asignar el nombre del paquete de tu aplicación,el cual es el nombre del id de tu proyecto cuando lo creaste en android studio, lo puedes ver en la el archivo gradle de nivel de modulo o en el nombre del paquete que se generó en la main activity y que todas tus clases tendran. Es muy importante este paquete, ya que firebase va a enlazar tu app directamente a este nombr y si no coincide lo recharzará 
+![](.TUTORIAL_images/11b9db5d.png)
 
-![](.README_images/63018a56.png)
+Creamos nuestra clase en kotlin TareaGuardarRedSocial, en donde generaremos un objeto para cada una de estas clases, un objeto "estatus" de la clase Estatus y otro objeto "redsocial" de la clase RedSocial
 
-Despues oprimes el boton de Registrar aplicación y el siguente paso es el archivo JSON de descarga de google.services, este archivo lo descargas y te vas a la vista Project de Android Studio y alli pegas ese archivo json dentro de la carpeta app.
+![](.TUTORIAL_images/f40726c7.png)
 
-![](.README_images/e110eebd.png)
+Dentro de esta clase se hara la captura de los datos desde nuestro celular, los cuales se harán en el override fun onPreExecute(), previo se hace el enlace del layout de la interfaz del celular:
 
-![](.README_images/4d28272f.png)
+![](.TUTORIAL_images/e4746b6a.png)
 
-Despues debes de añadir el SDK de firebase a tu proyecto: Primero a nivel de gradle de proyecto vas a agregar
+El siguiente proceso es usar el Retrofit para poder enviar la información capturada en el celular al back end (nuestro servidor heroku)
+1-.Creamos nuestro objeto retrofit
+2-.Le indicamos la ruta donde guardara la información capturada.
+3-.Hacemos la indicación que la información capturada sea convertida en un objeto Json ya que es necesario realizar este paso para que en el back end ésta información
+pueda ser recibida y guardada.
 
-![](.README_images/d74cd228.png)
+![](.TUTORIAL_images/cce33fbd.png)
 
-![](.README_images/e35859d6.png)
+Creamos nuestro ServicioRedSocial, la cual contiene los funciones CRUD, que con la ayuda de Retrofit nos ayudará a guardar la información recibida.
+En este caso solo utilizaremos el PUT y GET.
 
-Después en el gradle de nivel de módulo agregar la siguiente dependencia:
+![](.TUTORIAL_images/323d3382.png)
 
-![](.README_images/0cb56e1a.png)
+1-.Una vez que tenemos nuestro servicio RedSocial crearemos una variable de ésta clase con la finalidad de guardar nuestro objeto redSocial (con token y nockname)
+2-.Generamos nuestra variable "envio" el cual enviará nuestro objeto "redsocial", utilizando un objeto de la clase Estatus para notificarnos que se ha ejecutado la acción solicitada.
 
-![](.README_images/48499191.png)
 
-Hasta abajo de ese archivo del build d nivel de modulo se agregará la siguiente linea:
+![](.TUTORIAL_images/f3c82fd9.png)
 
-![](.README_images/c61da6a2.png)
 
+Ahora en el IntelliJ IDEA, necesitamos crear nuestras clases homólogas a las que se crearon en Kotlin.
+Creamos la clase RedSocial con el mismo número de variables pues deben de coincidir ya que en caso de no ser las mismas variables nos marcará error.
+Cada una de nuestras variables dentro de ésta clase tienen los métodos get y set correspondientes.
 
-Debemos postetiormente de esto, generar las clases Kotlin:
+![](.TUTORIAL_images/f2181717.png)
 
-** MyFirebaseMessaginfService ** MyFirebaseInstanceIDService ** MyJobService 
+Creamos nuestra Clase RepoRedSocial, ésta clase es la que hará la función de guardar nuestra información en la base de datos MongoDB, es decir, nos genera un repositorio 
+para la infomación que se va a guardar.
 
-![](.README_images/d1228289.png)
+![](.TUTORIAL_images/bb4a3237.png)
 
+Esta es la parte importante del proceso, una vez que se tiene el objeto redsocial debemos GUARDARLO en nuestro servidor.
+Para esto generamos nuestro controlador ControladorRedSocial, el cual recibirá el objeto redsocial, se hará el mapeo correspondiente.
+1-.Con el método POSTMAPPING se guardará la información que se esta capturando 
 
-Del repositorio, ingresamos a las rutas para encontrar el código que llevará cada una de las clases que creamos anteriormente, el código que se tienen en éstas es el que indica la página oficial de google:
+![](.TUTORIAL_images/8c59b29b.png)
 
-![](.README_images/48f83b6b.png)
+2-.Creamos un objeto "maper" de la clase ObjectMaper 
+3-.Creamos un objeto "red" de la clase RedSocial con el cual se hará el mapeo para poder guardar la información de éste objeto.
 
-Ingresamos a la clase MyFirebaseInstanceIDService y copiamos todo el código excepto el package:
 
-![](.README_images/a09100e6.png)
+![](.TUTORIAL_images/385b7237.png)
+    
+4-.Guardamos nuestro objeto "red" en el repositorio repoRedSocial
 
-Copiamos el siguiente código de MyFirebaseMessaginfService a nuestro proyecto creado:
+![](.TUTORIAL_images/6d0f8846.png)
 
-![](.README_images/9ba7af9b.png)
+Es importante mencionar que las apis construidas deben de nombrarse igual a las que se tienen en Kotlin en la clase ServicioRedSocial.
 
-Copiamos el siguiente código de MyJobService a nuestro proyecto creado:
+![](.TUTORIAL_images/c67c3d61.png)
+![](.TUTORIAL_images/e01655ee.png)
 
-![](.README_images/ec82d98e.png)
 
-El siguiente paso es agregar los servicios de notificacion siguientes en el archivo AndroidManifest.xml, esto lo debes agregar inmediatamente abajo de la etiqueta de cierre de la activity, antes del cierre del manifest
-como se inidca a continuación:
 
-![](.README_images/3e2a1963.png)
 
-![](.README_images/4831781d.png)
 
-```
-<!-- Agregamos aqui la parte de el servicio de mensajeria -->
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
-        <service android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
-        <service
-            android:name=".MyJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
-            </intent-filter>
-        </service>
-```
 
-Ingresamos al repositorio a la ruta indicada para poder ingresar al archivo ic_stat_ic_notification.png:
-
-![](.README_images/720b8a1c.png)
-
-Descargamos el archivo y lo guardamos para copiarlo en la carpeta drawable:
-
-![](.README_images/325279d6.png)
-
-Lo copiamos en la carpeta drawable:
-
-![](.README_images/7273e227.png)
-
-De la ruta indicada en el repositorio, ingresamos a la carpeta "values" e ingresamos al archivo strings.xml:
-
-![](.README_images/dc182987.png)
-
-Copiamos el código del archivo strings.xml y lo pegamos en nuestro proyecto dentro de la carpeta "values" en el archivo strings.xml
-
-![](.README_images/f5ee98e3.png)
-
-![](.README_images/19685aaf.png)
-
-```
-
-<resources>
-    <string name="app_name">Salud Unitec</string>
-    <string name="title_activity_menu">Menu</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="subscribe_to_news">Subscribirse a alertas</string>
-    <string name="log_token">Obtener token</string>
-
-    <string name="msg_subscribed">Subscribirse a alertas</string>
-    <string name="msg_token_fmt" translatable="false">ID del Token: %s</string>
-
-    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <!--
-        This is the name that users will see when interacting with this channel.
-        It should describe the category of notifications that will be sent through this channel
-     -->
-    <string name="default_notification_channel_name" translatable="true">News</string>
-</resources>
-
-```
-
-En caso de que nos aparezca del lado izquierdo de la pantalla la instrucción Sync Now le damos ok , para descargar las dependecias correctamente, una voz hecho esto corremos la aplicación.
-
-![](.README_images/25197d56.png)
-
-
-
-Para continuar con la mensajeria en la app, procedemos a seleccionar nuestro proyecto en Firebase:
-
-![](.README_images/7e1db6ab.png)
-
-Seleccionamos la Opción "Cloud Messaging":
-
-![](.README_images/ef5e9501.png)
-
-Seleccionamos nuestro primer mensaje:
-
-![](.README_images/74e986fb.png)
-
-Llenamos los campos correspondientes y damos siguiente:
-
-![](.README_images/41cb38d8.png)
-
-Una vez hecho esto procedemos a seleccionar el nombre de nuestro proyecto:
-
-![](.README_images/fd5f88d1.png)
-
-Damos enviar Ahora el mensaje:
-
-![](.README_images/c06124e5.png)
-
-Le damos siguiente:
-
-![](.README_images/b7574707.png)
-
-Seleccionamos con sonido Habilitado:
-
-![](.README_images/ff0df026.png)
-
-Damos revisar:
-
-![](.README_images/f0bee9cf.png)
-
-Revisamos desde la consola que se haya enviado el mensaje al celular:
-
-![](.README_images/7d587550.png)
-
-Y esto indica que nos llega una notificación al celular con el mensaje que escribimos desde la consola.
 
 
 
