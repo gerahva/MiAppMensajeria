@@ -22,7 +22,7 @@ import com.firebase.jobdispatcher.FirebaseJobDispatcher
 import com.firebase.jobdispatcher.GooglePlayDriver
 import android.R
 import android.graphics.BitmapFactory
-import android.graphics.Bitmap
+
 
 
 
@@ -120,13 +120,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setUsage(AudioAttributes.USAGE_NOTIFICATION)
             .build()
         val color = resources.getColor(R.color.holo_orange_dark)
-        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_dialog_map)
+        val largeIcon = BitmapFactory.decodeResource(resources,R.drawable.ic_dialog_email)
 
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_dialog_map)
             .setColor(color)
             .setColorized(true)
+
+
             .setLargeIcon(largeIcon)
             .setContentTitle("Mensaje nuevo ")
 
