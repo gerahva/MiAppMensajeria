@@ -1,5 +1,6 @@
 package org.mensajeria.cotizacion
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -19,6 +20,13 @@ import androidx.core.app.NotificationCompat
 
 import com.firebase.jobdispatcher.FirebaseJobDispatcher
 import com.firebase.jobdispatcher.GooglePlayDriver
+import android.R
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+
+
+
+
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -42,11 +50,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "de" + remoteMessage!!.from!!)
+        Log.i(TAG, "de" + remoteMessage!!.from!!)
 
         // Check if message contains a data payload.
         if (remoteMessage.data.size > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.data)
+            Log.i(TAG, "Message data payload: " + remoteMessage.data)
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -66,7 +74,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
 
-        sendNotification("Ecatepec 33868:"+remoteMessage.getData().get("body"));
+        sendNotification(remoteMessage.data.get("title").toString()+" "+remoteMessage.getData().get("body"));
     }
     // [END receive_message]
 
@@ -96,6 +104,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      *
      * @param messageBody FCM message body received.
      */
+    @SuppressLint("NewApi")
     private fun sendNotification(messageBody: String) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -103,30 +112,36 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             PendingIntent.FLAG_ONE_SHOT)
 
 
-        val channelId = getString(R.string.default_notification_channel_id)
+        val channelId = "Canal malo"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         // val sonido = Uri.parse("android.resource://sonido/alerta.mp3")
         val attributes = AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_NOTIFICATION)
             .build()
+        val color = resources.getColor(R.color.holo_orange_dark)
+        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_dialog_map)
+
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_stat_ic_notification)
+            .setSmallIcon(R.drawable.ic_dialog_map)
+            .setColor(color)
+            .setColorized(true)
+            .setLargeIcon(largeIcon)
             .setContentTitle("Mensaje nuevo ")
 
             .setContentText(messageBody)
 
             .setSound(defaultSoundUri)
-            .setContentIntent(pendingIntent)  .setPriority(NotificationCompat.PRIORITY_HIGH).setAutoCancel(true)
+            .setContentIntent(pendingIntent) .setPriority(NotificationCompat.PRIORITY_HIGH).setAutoCancel(true)
 
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        // Since android Oreo notification channel is needed.
+        // A partir de oreo(Android ) las notificaciones se agregan con esto.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId,
-                "Canal de salud",
+                "Mensajeria gera",
                 NotificationManager.IMPORTANCE_HIGH)
             channel.enableLights(true)
             channel.lightColor=Color.RED
@@ -143,6 +158,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     companion object {
 
-        private val TAG = "MyFirebaseMsgService"
+        private val TAG = "puto"
     }
 }
