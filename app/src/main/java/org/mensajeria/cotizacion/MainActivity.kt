@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         registrar.setOnClickListener {
 
-            //segundo paso obtener token
+            //segundo paso obtener token   nnnnnnnnnnnnnnnnnnnn
             var token= FirebaseInstanceId.getInstance().token
 
                     Toast.makeText(this,"El toke es $token",Toast.LENGTH_LONG).show()
