@@ -10,6 +10,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import android.util.Log
+import androidx.core.app.NotificationManagerCompat
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -128,30 +129,46 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setContentTitle("hola")
+            .setContentText("Hola mundo")
             .setSmallIcon(R.drawable.ic_loyaltito)
+
             .setColor(color)
+            .setContentTitle("Nuevo mensaje")
             .setColorized(true)
             .setLargeIcon(larga)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+
+
             .setStyle(NotificationCompat.BigPictureStyle()
                 .bigPicture(larga)
                 .bigLargeIcon(null))
-            .setContentText(messageBody)
 
             .setAutoCancel(true)
-            .setSound(defaultSoundUri)
+
             .setContentIntent(pendingIntent)
+
+
+            .setSound(defaultSoundUri)
+            .build()
+
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId,
-                "Channel human readable title",
+                "Noticias",
                 NotificationManager.IMPORTANCE_HIGH)
+
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build())
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder)
+
+
+
     }
 
     companion object {

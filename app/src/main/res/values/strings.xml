@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mi mensajeria de cotización</string>
+    <string name="app_name">   Aplicación de mensajeria wats app</string>
     <string name="title_activity_menu">Menu</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -18,5 +18,5 @@
         This is the name that users will see when interacting with this channel.
         It should describe the category of notifications that will be sent through this channel
      -->
-    <string name="default_notification_channel_name" translatable="true">News</string>
+    <string name="default_notification_channel_name" translatable="true">Noticias</string>
 </resources>
