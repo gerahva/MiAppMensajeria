@@ -1,6 +1,8 @@
 # MiAppMensajeria
 Repositorio de mensajeria Firebase
 
+[Link de notificaciones](https://developer.android.com/training/notify-user/expanded)
+
 El primer paso es generar um muevo proyecto en Android studio en el cual vamos a implementar Firebase.
 
 ![](.README_images/26a0f75c.png)
