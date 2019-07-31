@@ -147,7 +147,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId,
                 "Channel human readable title",
-                NotificationManager.IMPORTANCE_DEFAULT)
+                NotificationManager.IMPORTANCE_HIGH)
             notificationManager.createNotificationChannel(channel)
         }
 
@@ -156,6 +156,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     companion object {
 
-        private const val TAG = "puto"
+        private const val TAG = "hecho"
     }
 }

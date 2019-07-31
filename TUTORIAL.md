@@ -69,6 +69,7 @@ Para esto generamos nuestro controlador ControladorRedSocial, el cual recibirá 
 
 2-.Creamos un objeto "maper" de la clase ObjectMaper 
 3-.Creamos un objeto "red" de la clase RedSocial con el cual se hará el mapeo para poder guardar la información de éste objeto.
+En el mapeo se hará para tomar un objeto JSON y convertirlo a un objeto JAVA, esto con la finalidad que pueda ser interpretado por la clase correspondiente.
 
 
 ![](.TUTORIAL_images/385b7237.png)
@@ -81,6 +82,27 @@ Es importante mencionar que las apis construidas deben de nombrarse igual a las 
 
 ![](.TUTORIAL_images/c67c3d61.png)
 ![](.TUTORIAL_images/e01655ee.png)
+
+Ahora nos enfocaremos a la clase MyFirebaseMessagingService.kt dado que el método "sendNotification(messageBody: String)" es el que se encargará
+de enviar el mensaje de NOTIFICACIÓN a nuestro celular.
+
+![](.TUTORIAL_images/c8430198.png)
+
+En esta parte del código indicamos el color que tendrá el texto de la notificación
+
+![](.TUTORIAL_images/7204d191.png)
+
+La siguiente parte nos indicará el tamaño de la notificación, así como la imagen que mostrará la notificación, es decir, nos mostrará en tamaño grande o pequeño de la imagen y de la notificación.
+
+![](.TUTORIAL_images/61f81bfa.png)
+
+En la siguiente parte señalada se indica la imagen que mostrará la notificación, ésta debera ser previamente cargada en la parte de drawable.
+
+![](.TUTORIAL_images/9ee9e830.png)
+
+La siguiente parte del código, es para indicar la importancia de la notificación, ya que puede ser Baja, Alta, o Default.
+
+![](.TUTORIAL_images/c5a3e18e.png)
 
 
 
