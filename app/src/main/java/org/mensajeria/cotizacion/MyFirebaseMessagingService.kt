@@ -118,7 +118,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @param messageBody FCM message body received.
      */
     private fun sendNotification(messageBody: String) {
+
+        //Del mensaje que llega en el firebase emergente asignamos a la variable messagebody ese mensaje a la
+        //variable Globales.mensaje ese valor.
+
+
         Globales.mensaje=messageBody
+
+
+        // De aqui, el siguiente renglón cuando en la cajita emergente del mensaje ( que no quedaba)
+        // le damos click o tocar nos reedirecciona a a una activity que es el abajo, el de ActivityMensajeria
+        // esa variable Globales.mensaje se la pasamos al TextView que esta en ese activity (ver abajo del método SETCONTENTVIEW
+        // para ver como se pasa esa variable global al TextView
+
         val intent = Intent(this, ActivityMensajeria::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -130,7 +142,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val larga= BitmapFactory.decodeResource(resources, R.drawable.face)
 
-
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
 
             .setContentTitle(messageBody)
@@ -138,7 +149,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setSmallIcon(R.drawable.ic_loyaltito)
 
             .setColor(color)
-
             .setColorized(true)
             .setLargeIcon(larga)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -151,7 +161,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setAutoCancel(true)
 
             .setContentIntent(pendingIntent)
-
 
            .setSound(defaultSoundUri)
            // .setSound((Uri.parse("android.resource://"+this.baseContext.applicationContext.packageName+"/"+R.raw.alien)))

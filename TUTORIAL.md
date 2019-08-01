@@ -86,7 +86,7 @@ Es importante mencionar que las apis construidas deben de nombrarse igual a las 
 Ahora nos enfocaremos a la clase MyFirebaseMessagingService.kt dado que el método "sendNotification(messageBody: String)" es el que se encargará
 de enviar el mensaje de NOTIFICACIÓN a nuestro celular.
 
-![](.TUTORIAL_images/c8430198.png)
+![](.TUTORIAL_images/7b6c65ec.png)
 
 En esta parte del código indicamos el color que tendrá el texto de la notificación
 
