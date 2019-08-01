@@ -1,5 +1,6 @@
 package org.mensajeria.cotizacion
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -23,6 +24,16 @@ class MainActivity : AppCompatActivity() {
             //paso 3:
         TareaGuardarRedSocial(this,token,this).execute()
 
+
+
+
+        }
+
+
+        verUsuarios.setOnClickListener {
+
+            var i = Intent(this, ActivityListaRed::class.java)
+            startActivity(i)
         }
     }
 }

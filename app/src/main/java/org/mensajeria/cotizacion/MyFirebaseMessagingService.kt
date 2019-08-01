@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import android.util.Log
@@ -58,11 +59,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteMessage?.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
         }
-        sendNotification(remoteMessage?.data?.get("title").toString()+" "+remoteMessage?.getData()?.get("body"))
+        sendNotification(remoteMessage?.data?.get("title").toString()+" : "+remoteMessage?.getData()?.get("body"))
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
     }
+
     // [END receive_message]
 
     // [START on_new_token]
@@ -116,7 +118,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @param messageBody FCM message body received.
      */
     private fun sendNotification(messageBody: String) {
-        val intent = Intent(this, MainActivity::class.java)
+        Globales.mensaje=messageBody
+        val intent = Intent(this, ActivityMensajeria::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
             PendingIntent.FLAG_ONE_SHOT)
@@ -125,16 +128,17 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
   val color=resources.getColor(R.color.colorAccent)
 
-        val larga= BitmapFactory.decodeResource(resources, R.drawable.body)
+        val larga= BitmapFactory.decodeResource(resources, R.drawable.face)
 
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setContentTitle("hola")
-            .setContentText("Hola mundo")
+
+            .setContentTitle(messageBody)
+            .setContentText("Aplicación de mensajes gratis")
             .setSmallIcon(R.drawable.ic_loyaltito)
 
             .setColor(color)
-            .setContentTitle("Nuevo mensaje")
+
             .setColorized(true)
             .setLargeIcon(larga)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -149,7 +153,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setContentIntent(pendingIntent)
 
 
-            .setSound(defaultSoundUri)
+           .setSound(defaultSoundUri)
+           // .setSound((Uri.parse("android.resource://"+this.baseContext.applicationContext.packageName+"/"+R.raw.alien)))
             .build()
 
 

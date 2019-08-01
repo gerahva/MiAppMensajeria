@@ -21,4 +21,8 @@ interface ServicioRedSocial {
     @GET("api/red-social/{token}")
     fun buscarRedSocial(@Path("token") token:Int?): Call<RedSocial>
 
+    //Servicio REST para buscar un cliente por su ident
+    @GET("api/red-social/")
+    fun buscarRedSocialTodos(): Call<ArrayList<RedSocial>>
+
 }

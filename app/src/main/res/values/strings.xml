@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">   Aplicación de mensajeria wats app</string>
+    <string name="app_name">  Mi aplicación de Mensajeria</string>
     <string name="title_activity_menu">Menu</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
