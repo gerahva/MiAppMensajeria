@@ -9,7 +9,7 @@ import android.widget.TextView
 
 
 class RedSocialAdapter(items: ArrayList<RedSocial>?, ctx: Context) :
-    ArrayAdapter<RedSocial>(ctx, R.layout.lista_simple_redsocial, items) {
+    ArrayAdapter<RedSocial>(ctx, R.layout.item_simple_redsocial, items) {
 
     //view holder is used to prevent findViewById calls
     private class RedSocialItemViewHolder {
@@ -27,7 +27,7 @@ class RedSocialAdapter(items: ArrayList<RedSocial>?, ctx: Context) :
 
         if (view == null) {
             val inflater = LayoutInflater.from(context)
-            view = inflater.inflate(R.layout.lista_simple_redsocial, viewGroup, false)
+            view = inflater.inflate(R.layout.item_simple_redsocial, viewGroup, false)
 
             viewHolder = RedSocialItemViewHolder()
             viewHolder.nickname = view!!.findViewById<View>(R.id.txtNickname) as TextView

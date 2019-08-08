@@ -59,6 +59,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteMessage?.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
         }
+
+
         sendNotification(remoteMessage?.data?.get("title").toString()+" : "+remoteMessage?.getData()?.get("body"))
 
         // Also if you intend on generating your own notifications as a result of a received FCM

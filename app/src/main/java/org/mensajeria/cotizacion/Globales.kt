@@ -5,4 +5,5 @@ object Globales {
 
     var usuariosRed:ArrayList<RedSocial>?=null
     var mensaje:String?=null
+    var usuarioMensaje:RedSocial?=null;
 }

@@ -25,4 +25,7 @@ interface ServicioRedSocial {
     @GET("api/red-social/")
     fun buscarRedSocialTodos(): Call<ArrayList<RedSocial>>
 
+    @GET("api/mensajeria/{nickname}/{mensaje}")
+    fun enviarMensaje(@Path("nickname")nickname:String?,@Path("mensaje") mensaje:String? ):Call<Estatus>
+
 }

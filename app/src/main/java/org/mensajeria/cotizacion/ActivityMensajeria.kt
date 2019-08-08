@@ -10,5 +10,10 @@ class ActivityMensajeria : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mensajeria)
         textoMensaje.setText(Globales.mensaje)
+
+        textView.setText(Globales.usuarioMensaje?.nickname);
+        botonenviar.setOnClickListener {
+            TareaEnviarMensaje(this,this).execute()
+        }
     }
 }
