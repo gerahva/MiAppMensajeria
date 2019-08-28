@@ -22,10 +22,6 @@ De igual forma creamos en Kotlin la clase Estatus, la cual nos proporcionará un
 
 ![](.TUTORIAL_images/11b9db5d.png)
 
-Creamos nuestra clase en kotlin TareaGuardarRedSocial, en donde generaremos un objeto para cada una de estas clases, un objeto "estatus" de la clase Estatus y otro objeto "redsocial" de la clase RedSocial
-
-![](.TUTORIAL_images/f40726c7.png)
-
 A continuación creamos el layout para la aplicación, donde se registrará el usuario y se guardará el token:
 
 ![](.TUTORIAL_images/039ce701.png)
@@ -43,6 +39,10 @@ Para el registro del token en el layout
 ![](.TUTORIAL_images/80c2fb4c.png)
 
 ![](.TUTORIAL_images/55344590.png)
+
+Creamos nuestra clase en kotlin TareaGuardarRedSocial, en donde generaremos un objeto para cada una de estas clases, un objeto "estatus" de la clase Estatus y otro objeto "redsocial" de la clase RedSocial
+
+![](.TUTORIAL_images/f40726c7.png)
 
 Dentro de esta clase se hara la captura de los datos desde nuestro celular, los cuales se harán en el override fun onPreExecute(), previo se hace el enlace del layout de la interfaz del celular:
 
