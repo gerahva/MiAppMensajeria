@@ -21,9 +21,14 @@ class ActivityListaRed : AppCompatActivity() {
 
 
         val lv = findViewById<ListView>(R.id.lista_redsocial)
+
         val redSocialAdapter = RedSocialAdapter(usuariosRed,this)
         lv.adapter = redSocialAdapter
         lv.dividerHeight = 2
+
+
+        //El siguiente es el evento de clickeo de cada uno de los elementos de listview
+        //cuando le das click te redirecciona a otro activity, donde ya puedes enviar el emnsaje
 
 
         lv.onItemClickListener = AdapterView.OnItemClickListener {

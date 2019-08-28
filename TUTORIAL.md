@@ -30,6 +30,26 @@ Dentro de esta clase se hara la captura de los datos desde nuestro celular, los 
 
 ![](.TUTORIAL_images/e4746b6a.png)
 
+A continuación creamos el layout para la aplicación, donde se registrará el usuario y se guardará el token:
+
+![](.TUTORIAL_images/039ce701.png)
+
+Con las siguientes componentes:
+
+![](.TUTORIAL_images/8c42b75e.png)
+
+![](.TUTORIAL_images/025410ac.png)
+
+Para el registro del token en el layout
+
+![](.TUTORIAL_images/3f9b0236.png)
+
+![](.TUTORIAL_images/80c2fb4c.png)
+
+![](.TUTORIAL_images/55344590.png)
+
+
+
 El siguiente proceso es usar el Retrofit para poder enviar la información capturada en el celular al back end (nuestro servidor heroku)
 1-.Creamos nuestro objeto retrofit
 2-.Le indicamos la ruta donde guardara la información capturada.
