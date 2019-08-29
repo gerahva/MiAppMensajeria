@@ -4,5 +4,7 @@ Creamos la clase Globales, la cual contendra las siguientes variables, la variab
 
 ![](.MENS_WTSPP_images/f56a5d6a.png)
 
-Creamos el layout 
+Creamos el layout activity_lista_red.xml
+
+
 

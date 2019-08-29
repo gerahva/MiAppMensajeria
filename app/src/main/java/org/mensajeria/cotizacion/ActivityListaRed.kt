@@ -12,6 +12,7 @@ class ActivityListaRed : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_red)
+        supportActionBar?.hide()
 
 
         //Primero obtenemos todos los usuarios de REdSocial de la siguiente tarea que se conecta al backend
@@ -25,6 +26,7 @@ class ActivityListaRed : AppCompatActivity() {
         val redSocialAdapter = RedSocialAdapter(usuariosRed,this)
         lv.adapter = redSocialAdapter
         lv.dividerHeight = 2
+
 
 
         //El siguiente es el evento de clickeo de cada uno de los elementos de listview

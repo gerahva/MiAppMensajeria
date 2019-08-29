@@ -8,7 +8,10 @@ class ActivityMensajeria : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_mensajeria)
+
+        supportActionBar?.hide()
         textoMensaje.setText(Globales.mensaje)
 
         textView.setText(Globales.usuarioMensaje?.nickname);

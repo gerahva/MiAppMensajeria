@@ -7,41 +7,49 @@
         android:background="@drawable/mensaj"
         tools:context=".MainActivity">
 
-    <Button
-            android:id="@+id/registrar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="320dp"
-            android:text="registrarse"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
             android:id="@+id/txtnickname"
-            android:layout_width="0dp"
+            android:layout_width="381dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="129dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Nickname"
             android:inputType="textPersonName"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-            android:id="@+id/verUsuarios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="320dp"
-            android:layout_marginEnd="66dp"
-            android:text="ver usuarios"
+    <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+                android:id="@+id/verUsuarios"
+                android:layout_width="208dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/colorPrimaryDark"
+                android:text="ver usuarios"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <Button
+                android:id="@+id/registrar"
+                android:layout_width="208dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@android:color/holo_orange_dark"
+                android:text="registrarse"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
